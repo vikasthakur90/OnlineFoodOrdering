@@ -1,15 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div",{id:"parent"},
-React.createElement("div",{id:"child"},
-[React.createElement("h1",{},"hello h1 tag"),
-React.createElement("h2",{},"hello h2 tag")]
+const d = "Vikas Thakur";
+const parent = (
+    <h1 className="heading">Hello vikas</h1>
+);
+const Headingcomponent = () =>(
+   <h1>hello heading</h1>
+    );
+//Component Composition
+const FooterComponent = ()=> (
+    <div>
+    {parent}
+    {d}
+    <Headingcomponent />
+    <footer>hey i am footer</footer>
+    </div>
 )
-)
-
-
-console.log(parent);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(<FooterComponent />);
