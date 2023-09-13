@@ -1,26 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-
-const Header = ()=>{
-    return(
-        <div className="header">
-         <div className="logo-container">
-         <img className="logo" src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats.png" />
-        </div>
-        <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Cart</li>
-            </ul>    
-        </div>   
-        
-        </div>
-    )
-}
-const restaurants = [
+export const restaurants = [
     {
         "info": {
             "id": "84070",
@@ -1610,44 +1588,3 @@ const restaurants = [
         }
     }
 ]
-const ResCard = (props) =>{
-    const {resData} = props;
-    //destructuring of props
-    const {name, cuisines,avgRating,cloudinaryImageId,costForTwo} = resData?.info;
-    return(
-        <>
-        <div className="res-card">
-            <img className="res-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} />
-            <h3>{name}</h3>
-            <span>{cuisines.join(', ')}</span>
-            <h4>Rating: {avgRating}</h4>
-            <h4>{costForTwo}</h4>
-            <h4>Delivery Time: {resData.info.sla.deliveryTime} Minutes</h4>
-            
-        </div>
-        </>
-    )
-}
-const Body =()=>{
-    return(
-        <div className="body">
-        <div className="search">
-            <h4>search</h4>
-        </div>
-        <div className="res-container">
-         {restaurants.map(res => <ResCard key ={res.info.id} resData = {res}/>)}
-        </div>
-
-        </div>
-    )
-}
-const AppLayout = () =>{
-    return(
-        <div className="app">
-            <Header/>
-            <Body />
-        </div>
-    )
-}
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
