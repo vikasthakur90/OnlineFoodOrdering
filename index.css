@@ -46,5 +46,20 @@ background-color: #f0f0f0;
     background-color: #f0f0f0;
     width: 200px;
     height: 450px;
+    margin: 20px;
+}
+.login{
+    padding: 5px;
 
+}
+.filter{
+    display: flex;
+    padding: 10px;
+}
+.search-text{
+    padding: 10px;
+    
+}
+.search-btn{
+    padding: 10px;
 }
