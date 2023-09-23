@@ -1,7 +1,8 @@
 import ResCard from "./ResCard";
 import { restaurants } from "../utils/mockData";
 import { useState,useEffect } from "react";
-
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body =()=>{
     const [listOfRestaurants,setlistOfRestaurants] = useState([]);
     const [filteredRestaurants,setfilteredRestaurants] = useState([]);
@@ -19,7 +20,7 @@ const Body =()=>{
     }
     //Conditional Rendering
   
-    return listOfRestaurants===0?(<Shimmer />) : (
+    return listOfRestaurants.length===0?(<Shimmer />) : (
         <div className="body">
         <div className="filter">
             <input className="search-text" value={searchText} onChange={(e)=>{
@@ -38,7 +39,7 @@ const Body =()=>{
 
         </div>
         <div className="res-container">
-         {filteredRestaurants.map(res => <ResCard key ={res.info.id} resData = {res}/>)}
+         {filteredRestaurants.map(res =>(<Link to={"/restaurants/"+res.info.id} key ={res.info.id}> <ResCard  resData = {res}/></Link>))}
         </div>
 
         </div>
