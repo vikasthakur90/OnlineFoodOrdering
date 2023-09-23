@@ -63,3 +63,8 @@ background-color: #f0f0f0;
 .search-btn{
     padding: 10px;
 }
+.user-card{
+    width: auto;;
+    height: fit-content;;
+    border: solid black;
+}
