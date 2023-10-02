@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import MenuCategory from "./MenuCategory";
 const RestaurantsMenu = ()=> {
     
     const {resId} = useParams();
@@ -10,16 +11,17 @@ const RestaurantsMenu = ()=> {
     
     if(resData===null){return <Shimmer />}
     const {name,cuisines,costForTwoMessage,avgRatingString} = resData?.data?.cards[0]?.card?.card?.info;
-    const {itemCards} = resData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    console.log(itemCards);
+  
+    const item = resData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    console.log(item);
+    //console.log(itemCards);
     return(
-    <div>
-        <h1>{name}</h1>
-        <p>{cuisines.join(" , ")} - {costForTwoMessage}</p>
-        <h2>Menu</h2>
-        <ul>
-       { itemCards.map((res) =><li key={res.card.info.id}>{res.card.info.name} -{"Rs"} {res.card.info.defaultprice / 100 || res.card.info.price /100}</li>)}
-        </ul>
+    <div className="text-center">
+        <h1 className="text-2xl font-bold m-8">{name}</h1>
+        <p className="text-lg font-semibold m-4">{cuisines.join(" , ")} - {costForTwoMessage}</p>
+        {item.map(c=><MenuCategory key ={c.card.card.title} {...props = c.card.card}/>)}
+        
+       
     </div>);
 }
 export default RestaurantsMenu;

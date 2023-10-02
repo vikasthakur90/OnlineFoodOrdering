@@ -6,6 +6,7 @@ export const restaurants = [
             "cloudinaryImageId": "g5txnz35wlrgbskk3r8y",
             "locality": "Sarwate",
             "areaName": "South Tukoganj",
+            "promoted":"true",
             "costForTwo": "₹250 for two",
             "cuisines": [
                 "North Indian",
@@ -92,6 +93,7 @@ export const restaurants = [
             "locality": "Greater Kailash Road",
             "areaName": "Old Palasia",
             "costForTwo": "₹350 for two",
+            "promoted":"true",
             "cuisines": [
                 "Mughlai",
                 "Biryani",
@@ -495,6 +497,7 @@ export const restaurants = [
             "locality": "Khajrana",
             "areaName": "Khajrana",
             "costForTwo": "₹250 for two",
+            "promoted":"true",
             "cuisines": [
                 "Mughlai",
                 "Biryani",

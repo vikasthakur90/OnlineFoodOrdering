@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard,{ PromotedResCard} from "./ResCard";
 import { restaurants } from "../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -7,20 +7,21 @@ const Body =()=>{
     const [listOfRestaurants,setlistOfRestaurants] = useState([]);
     const [filteredRestaurants,setfilteredRestaurants] = useState([]);
     const [searchText,setsearchText] = useState("");
+    
     useEffect(()=>{
         fetchData();
     },[]);
     const fetchData = async ()=>{
-        //const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        //const json = await data.json();
-        //console.log(json);
-    //    setlistOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      setlistOfRestaurants(restaurants);
-      setfilteredRestaurants(restaurants);
-      //  setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        console.log(json);
+        setlistOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      //setlistOfRestaurants(restaurants);
+      //setfilteredRestaurants(restaurants);
+        setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     //Conditional Rendering
-  
+    const PromotedRestCard = PromotedResCard(filteredRestaurants);
     return listOfRestaurants.length===0?(<Shimmer />) : (
         <div className="body">
         <div className="mx-4 px-4">
@@ -40,7 +41,9 @@ const Body =()=>{
 
         </div>
         <div className="flex flex-wrap">
-         {filteredRestaurants.map(res =>(<Link to={"/restaurants/"+res.info.id} key ={res.info.id}> <ResCard  resData = {res}/></Link>))}
+         {filteredRestaurants.map(res =>(<Link to={"/restaurants/"+res.info.id} key ={res.info.id}> 
+        { res.info?.promoted ? <PromotedRestCard resData = {res} />:<ResCard  resData = {res}/>}</Link>
+         ))}
         </div>
 
         </div>

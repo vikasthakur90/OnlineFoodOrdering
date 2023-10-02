@@ -18,4 +18,15 @@ const ResCard = (props) =>{
         </>
     )
 }
+
+export const PromotedResCard = () =>{
+    return(props) =>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white p-2 rounded-md">Promoted</label>
+                <ResCard {...props}/>
+            </div>
+        )
+    }
+}
 export default ResCard;
