@@ -22,9 +22,9 @@ const Body =()=>{
     }
     //Conditional Rendering
     const PromotedRestCard = PromotedResCard(filteredRestaurants);
-    return listOfRestaurants.length===0?(<Shimmer />) : (
+    return (listOfRestaurants.length===0 && filteredRestaurants.length===0)?(<Shimmer />) : (
         <div className="body">
-        <div className="mx-4 px-4">
+        <div className="text-center px-4">
             <input className="border border-solid border-black" value={searchText} onChange={(e)=>{
                 setsearchText(e.target.value);
                 
