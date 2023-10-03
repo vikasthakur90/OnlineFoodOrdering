@@ -2,10 +2,10 @@ import { useState,useEffect } from "react";
 import MenuItems from "./MenuItems";
 
 
-const MenuCategory = (props) =>{
-    const [showitems,setShowitems] = useState(false);
+const MenuCategory = (props,showitems,setShowindex) =>{
+   
     const menuToggle = ()=>{
-        setShowitems(!showitems);
+        setShowindex();
     }
     console.log(showitems);
     return <div className="bg-gray-50 my-4 p-2 w-6/12 m-auto" >

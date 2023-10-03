@@ -7,7 +7,7 @@ const RestaurantsMenu = ()=> {
     
     const {resId} = useParams();
     const resData = useRestaurantMenu(resId);
-
+    const [showindex,setShowindex] = useState(0);
     
     if(resData===null){return <Shimmer />}
     const {name,cuisines,costForTwoMessage,avgRatingString} = resData?.data?.cards[0]?.card?.card?.info;
@@ -19,7 +19,7 @@ const RestaurantsMenu = ()=> {
     <div className="text-center">
         <h1 className="text-2xl font-bold m-8">{name}</h1>
         <p className="text-lg font-semibold m-4">{cuisines.join(" , ")} - {costForTwoMessage}</p>
-        {item.map(c=><MenuCategory key ={c.card.card.title} {...props = c.card.card}/>)}
+        {item.map(c,index=><MenuCategory key ={c.card.card.title} {...props = c.card.card} showitems={index===showindex?true:false} setShowindex ={()=>setShowindex(index)}/>)}
         
        
     </div>);

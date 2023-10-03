@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const ResCard = (props) =>{
     const {resData} = props;
+    const {isLogged} = useContext(UserContext);
     //destructuring of props
     const {name, cuisines, avgRating, cloudinaryImageId, costForTwo} = resData?.info;
     return(
@@ -13,7 +16,7 @@ const ResCard = (props) =>{
             <h4>Rating: {avgRating}</h4>
             <h4>{costForTwo}</h4>
             <h4>Delivery Time: {resData.info.sla.deliveryTime} Minutes</h4>
-            
+            <h5>{isLogged}</h5>
         </div>
         </>
     )
