@@ -13,13 +13,13 @@ const Body =()=>{
         fetchData();
     },[]);
     const fetchData = async ()=>{
-        //const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        //const json = await data.json();
-        //console.log(json);
-        //setlistOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setlistOfRestaurants(restaurants);
-        setfilteredRestaurants(restaurants);
-        //setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        console.log(json);
+        setlistOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        //setlistOfRestaurants(restaurants);
+        //setfilteredRestaurants(restaurants);
+        setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     const {isLogged,setUsername} = useContext(UserContext)
     //Conditional Rendering

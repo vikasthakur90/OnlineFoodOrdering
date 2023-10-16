@@ -8,7 +8,8 @@ import Error from "./component/Error";
 import Contact from "./component/Contact";
 import RestaurantsMenu from "./component/RestaurantMenu";
 import UserContext from "./utils/UserContext";
-
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 
 const AppLayout = () =>{
@@ -17,12 +18,14 @@ const AppLayout = () =>{
         setUsername("Vikas");
     },[])
     return(
+        <Provider store={appStore}>
         <UserContext.Provider value = {{ isLogged:username, setUsername }}>
         <div className="app">
             <Header/>
             <Outlet />
         </div>
         </UserContext.Provider>
+        </Provider>
     )
 }
 const Cart = lazy(()=>import("./component/Cart"));

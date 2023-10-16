@@ -1,19 +1,19 @@
-import { useState,useEffect } from "react";
 import MenuItems from "./MenuItems";
 
 
-const MenuCategory = (props,showitems,setShowindex) =>{
+const MenuCategory = ({data,showitems,setShowIndex}) =>{
    
     const menuToggle = ()=>{
-        setShowindex();
+        setShowIndex();
+        console.log("clicked");
     }
-    console.log(showitems);
+    console.log(data);
     return <div className="bg-gray-50 my-4 p-2 w-6/12 m-auto" >
       <div className="flex justify-between font-bold cursor-pointer" onClick={menuToggle}> 
-      <span> {props.title}({props.itemCards.length})</span>
+      <span> {data.title}({data.itemCards.length})</span>
        <span>↓</span>
        </div>
-       {showitems && props.itemCards.map(c => <MenuItems key={c.card?.info?.id} {...props = c} />)}
+       {showitems && data.itemCards.map(d => <MenuItems key={d.card?.info?.id} {...props = d} />)}
 
     </div>
 }
