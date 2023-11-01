@@ -13,7 +13,7 @@ const MenuCategory = ({data,showitems,setShowIndex}) =>{
       <span> {data.title}({data.itemCards.length})</span>
        <span>↓</span>
        </div>
-       {showitems && data.itemCards.map(d => <MenuItems key={d.card?.info?.id} {...props = d} />)}
+       {showitems && data.itemCards.map(d => <MenuItems key={d.card?.info?.id} {...item = d?.card?.info} />)}
 
     </div>
 }
