@@ -4,6 +4,7 @@ import { useState,useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body =()=>{
     const [listOfRestaurants,setlistOfRestaurants] = useState([]);
     const [filteredRestaurants,setfilteredRestaurants] = useState([]);
@@ -24,6 +25,10 @@ const Body =()=>{
     const {isLogged,setUsername} = useContext(UserContext)
     //Conditional Rendering
     const PromotedRestCard = PromotedResCard(filteredRestaurants);
+    const isOnline = useOnlineStatus();
+    if(isOnline === false){
+        return (<h1>User is Offline check your Internet Connection</h1>)
+    }
     return (listOfRestaurants.length===0 && filteredRestaurants.length===0)?(<Shimmer />) : (
         <div className="body">
         <div className="text-center px-4">
