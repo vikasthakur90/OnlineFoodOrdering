@@ -22,7 +22,9 @@ const Body =()=>{
         //setfilteredRestaurants(restaurants);
         setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
+
     const {isLogged,setUsername} = useContext(UserContext)
+    
     //Conditional Rendering
     const PromotedRestCard = PromotedResCard(filteredRestaurants);
     const isOnline = useOnlineStatus();
