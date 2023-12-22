@@ -1,12 +1,12 @@
-//import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import UserClass from "./UserClass";
 
 const About = () => {
-    // const onlinestatus = useOnlineStatus();
-    // console.log(onlinestatus);
-    // if(onlinestatus === false){
-    //     return(<h1>Opps Check your Connection</h1>);
-    // }
+    const onlinestatus = useOnlineStatus();
+    console.log(onlinestatus);
+    if(onlinestatus === false){
+        return(<h1>Opps Check your Connection</h1>);
+    }
     return(
         <div>
             <h1>About Page</h1>
