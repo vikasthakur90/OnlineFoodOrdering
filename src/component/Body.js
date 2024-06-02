@@ -17,10 +17,10 @@ const Body =()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
         console.log(json);
-        setlistOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        //setlistOfRestaurants(restaurants);
+        setlistOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        console.log(listOfRestaurants);
         //setfilteredRestaurants(restaurants);
-        setfilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setfilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     const {isLogged,setUsername} = useContext(UserContext)
@@ -50,7 +50,7 @@ const Body =()=>{
             <label className="p-2">Username</label>
             <input className="p-2 border border-solid border-black" value={isLogged} onChange={(e)=>
                 {setUsername(e.target.value);
-                }}></input>
+                }}></input> 
         </div>
         <div className="flex flex-wrap">
          {filteredRestaurants.map(res =>(<Link to={"/restaurants/"+res.info.id} key ={res.info.id}> 
